@@ -18,6 +18,10 @@ export class EpisodeService {
     return this.http.get<ResponseModel>( this.url + '/episode' );
   }
 
+  getEpisode( id: number ) {
+    return this.http.get<EpisodeModel>( this.url + '/episode/' + id );
+  }
+
   getEpisodesCharacter( ids: number[] ) {
     return this.http.get<any>( this.url + '/episode/' + [ids] );
   }

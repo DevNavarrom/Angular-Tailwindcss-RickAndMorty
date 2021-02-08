@@ -12,6 +12,10 @@ export const GET_CHARACTER = '[CHARACTER] Get One';
 export const GET_CHARACTER_OKAY = '[CHARACTER] Get One Ok';
 export const GET_CHARACTER_FAIL = '[CHARACTER] Get One Fail';
 
+export const GET_CHARACTERS_EPISODE = '[CHARACTERS EPISODES] Get All';
+export const GET_CHARACTERS_EPISODE_OKAY = '[CHARACTERS EPISODES] Get All Ok';
+export const GET_CHARACTERS_EPISODE_FAIL = '[CHARACTERS EPISODES] Get All Fail';
+
 
 // Get All
 export class GetCharactersAction implements Action {
@@ -45,6 +49,23 @@ export class GetCharacterFailAction implements Action {
     public constructor( public error: string ) {}
 }
 
+//Get All Characters
+export class GetCharactersEpisodeAction implements Action {
+    readonly type = GET_CHARACTERS_EPISODE;
+    public constructor( public ids : number[] ) {}
+}
+
+export class GetCharactersEpisodeOkayAction implements Action {
+    readonly type = GET_CHARACTERS_EPISODE_OKAY;
+    public constructor( public payload: any[] ) {}
+}
+
+export class GetCharactersEpisodeFailAction implements Action {
+    readonly type = GET_CHARACTERS_EPISODE_FAIL;
+    public constructor( public error: string ) {}
+}
+
 
 export type actions = GetCharactersAction | GetCharactersOkayAction | GetCharactersFailAction |
-                      GetCharacterAction  | GetCharacterOkayAction  | GetCharacterFailAction;
+                      GetCharacterAction  | GetCharacterOkayAction  | GetCharacterFailAction  |
+                      GetCharactersEpisodeAction | GetCharactersEpisodeOkayAction | GetCharactersEpisodeFailAction;

@@ -7,6 +7,7 @@ import { AppState } from 'src/app/store/app.store';
 import { CharacterModel } from '../../../models/character.model';
 import { GetEpisodesCharacterAction } from '../../../store/actions/episode.actions';
 import { EpisodeModel } from '../../../models/episode.model';
+import { getIds } from '../../../utils/constants';
 
 @Component({
   selector: 'app-character-detail',
@@ -43,15 +44,12 @@ export class CharacterDetailComponent implements OnInit {
         if (state.character.episode.length > 0) {
           
           this.character.episode.forEach((item) => {
-            this.idsEpisodes.push(parseInt(this.getIds(item)));
+            this.idsEpisodes.push(parseInt(getIds(item)));
           });
   
           this.store.dispatch( new GetEpisodesCharacterAction(this.idsEpisodes));
-
-          
+ 
         }
-
-        /*  */
 
       });
 
@@ -73,21 +71,6 @@ export class CharacterDetailComponent implements OnInit {
 
     this.store.dispatch( new GetCharacterAction(id) );
     
-  }
-
-  getIds(string) {
-    let tmp = string.split("");
-    let map = tmp.map((current) => {
-      if (!isNaN(parseInt(current))) {
-        return current;
-      }
-    });
-  
-    let numbers = map.filter((value) => {
-      return value != undefined;
-    });
-  
-    return numbers.join("");
   }
 
 }

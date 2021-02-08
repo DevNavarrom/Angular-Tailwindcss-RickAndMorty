@@ -4,7 +4,7 @@ import { Action } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CharacterService } from '../../services/character.service';
-import { GET_CHARACTERS, GetCharactersOkayAction, GetCharactersFailAction, GET_CHARACTER, GetCharacterAction, GetCharacterOkayAction, GetCharacterFailAction } from '../actions/character.actions';
+import { GET_CHARACTERS, GetCharactersOkayAction, GetCharactersFailAction, GET_CHARACTER, GetCharacterAction, GetCharacterOkayAction, GetCharacterFailAction, GET_CHARACTERS_EPISODE, GetCharactersEpisodeAction, GetCharactersEpisodeOkayAction, GetCharactersEpisodeFailAction } from '../actions/character.actions';
 import { ResponseModel } from '../../models/response.model';
 import { CharacterModel } from "src/app/models/character.model";
 
@@ -52,6 +52,25 @@ export class CharacterEffects {
                     return of( new GetCharacterFailAction(err) );
                 })
             );
+        })
+    );
+
+    @Effect()
+    getCharactersEpisode$: Observable<Action> = this.actions$.pipe(
+        ofType( GET_CHARACTERS_EPISODE ),
+        mergeMap( (action: GetCharactersEpisodeAction) => {
+
+            return this._service.getCharactersEpisode(action.ids).pipe(
+                map( (resp: any) => {
+                    if (resp) {
+                        return new GetCharactersEpisodeOkayAction(resp);
+                    }
+                }),
+                catchError( (err) => {
+                    return of( new GetCharactersEpisodeFailAction(err) );
+                })
+            );
+
         })
     );
     

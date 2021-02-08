@@ -1,7 +1,7 @@
 import { EpisodeModel } from 'src/app/models/episode.model';
 import { CharacterModel } from '../../models/character.model';
 import * as characterActions from '../actions/character.actions';
-import { GET_CHARACTERS, GET_CHARACTERS_OKAY, GET_CHARACTERS_FAIL, GET_CHARACTER, GET_CHARACTER_OKAY, GET_CHARACTER_FAIL } from '../actions/character.actions';
+import { GET_CHARACTERS, GET_CHARACTERS_OKAY, GET_CHARACTERS_FAIL, GET_CHARACTER, GET_CHARACTER_OKAY, GET_CHARACTER_FAIL, GET_CHARACTERS_EPISODE, GET_CHARACTERS_EPISODE_OKAY, GET_CHARACTERS_EPISODE_FAIL } from '../actions/character.actions';
 
 
 
@@ -15,6 +15,10 @@ export interface CharacterState {
     loadingCharacter: boolean;
     errorLoadCharacter: string;
 
+    charactersEpisode: CharacterModel[];
+    loadingcharactersEpisode: boolean;
+    errorLoadcharactersEpisode: string;
+
 }
 
 const stateInitial: CharacterState = {
@@ -25,7 +29,11 @@ const stateInitial: CharacterState = {
     
     character: new CharacterModel(),
     loadingCharacter: false,
-    errorLoadCharacter: ""
+    errorLoadCharacter: "",
+
+    charactersEpisode : new Array<CharacterModel>(),
+    loadingcharactersEpisode : false,
+    errorLoadcharactersEpisode : ""
 
 }
 
@@ -72,6 +80,26 @@ export function charactersReducer(
                     loadingCharacter: false,
                     errorLoadCharacter: action.error,
                     character: new CharacterModel()
+                }
+            case GET_CHARACTERS_EPISODE:
+                return {
+                    ...state,
+                    loadingcharactersEpisode: true,
+                    errorLoadcharactersEpisode: ""
+                }
+            case GET_CHARACTERS_EPISODE_OKAY:
+                return {
+                    ...state,
+                    loadingcharactersEpisode: false,
+                    errorLoadcharactersEpisode: "",
+                    charactersEpisode: action.payload
+                }
+            case GET_CHARACTERS_EPISODE_FAIL:
+                return {
+                    ...state,
+                    loadingcharactersEpisode: false,
+                    errorLoadcharactersEpisode: action.error,
+                    charactersEpisode: new Array<CharacterModel>()
                 }
             
         

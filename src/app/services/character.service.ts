@@ -22,4 +22,8 @@ export class CharacterService {
     return this.http.get<CharacterModel>( this.url + '/character/' + id );
   }
 
+  getCharactersEpisode( ids: number[] ) {
+    return this.http.get<any>( this.url + '/character/' + [ids] );
+  }
+
 }

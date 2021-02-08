@@ -30,6 +30,7 @@ import { EpisodesComponent } from './components/episodes/episodes.component';
 import { CharacterDetailComponent } from './components/characters/character-detail/character-detail.component';
 
 import { environment } from '../environments/environment.prod';
+import { EpisodeDetailComponent } from './components/episodes/episode-detail/episode-detail.component';
 
 
 
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment.prod';
     NavbarComponent,
     CharactersComponent,
     EpisodesComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    EpisodeDetailComponent
   ],
   imports: [
     BrowserModule,
