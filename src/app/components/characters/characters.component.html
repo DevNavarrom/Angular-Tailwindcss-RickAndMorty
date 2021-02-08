@@ -1,42 +1,26 @@
-<section class="text-gray-700 body-font">
-  <div class="container px-8 pt-2 lg:px-10">
-    <!-- <div class="flex flex-wrap "> -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+<div class="w-full bg-white p-12">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
 
-      <!-- <div *ngFor="let character of characters" class="lg:w-1/4 md:w-full shadow-lg m-1">
-        <div class="rounded-xl">
-          <img class="object-cover object-center w-full h-64 mb-6 rounded-t-xl" src="{{character.image}}" alt="content">
-          <div class="p-6 ">
-            <h6
-              class="flex items-center justify-start mt-2 mb-4 text-2xl font-bold leading-none text-left text-blue-800 lg:text-4xl">
-              {{character.name}}
-            </h6>
-            <h2 class="mb-3 text-lg font-semibold text-gray-700 lg:text-2xl title-font">
-              {{character.status}} - {{character.species}}
-            </h2>
-          </div>
+    <div *ngFor="let character of characters"
+      class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
+      <a href="#" class="w-full block h-full">
+        <img alt="blog photo" src="{{character.image}}" class="max-h-40 w-full object-cover" />
+        <div class="bg-white dark:bg-gray-800 w-full p-4">
+          <p class="text-indigo-500 text-md font-medium">
+            {{character.name}}
+          </p>
+          <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
+            {{character.status}} - {{character.species}}
+          </p>
+          <p class="text-gray-400 dark:text-gray-300 font-light text-md">
+            Last known location:
+          </p>
+          <p class="mb-4 text-base leading-relaxed">
+            {{character.location.name}}
+          </p>
         </div>
-      </div> -->
-      <div *ngFor="let character of characters" class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
-        <a href="#" class="w-full block h-full">
-            <img alt="blog photo" src="{{character.image}}" class="max-h-40 w-full object-cover"/>
-            <div class="bg-white dark:bg-gray-800 w-full p-4">
-                <p class="text-indigo-500 text-md font-medium">
-                    {{character.name}}
-                </p>
-                <p class="text-gray-800 dark:text-white text-xl font-medium mb-2">
-                    {{character.status}} - {{character.species}}
-                </p>
-                <p class="text-gray-400 dark:text-gray-300 font-light text-md">
-                    Last known location:
-                </p>
-                <p class="mb-4 text-base leading-relaxed">
-                    {{character.location.name}}
-                </p>
-            </div>
-        </a>
+      </a>
     </div>
 
-    </div>
   </div>
-</section>
+</div>

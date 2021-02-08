@@ -27,7 +27,7 @@ export class CharactersComponent implements OnInit {
       this.store.dispatch( new GetCharactersAction() );
     }
 
-    this.subscription = this.store.select( state => state.charactersState ).subscribe(state => {
+    this.subscription = this.store.select( state => state.characters ).subscribe(state => {
 
       if (this.characters.length === 0) {
         this.characters = state.characters;

@@ -1,16 +1,4 @@
-<!-- <header class="text-gray-700 bg-white border-t border-b body-font">
-  <div class="container flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row ">
-    <nav class="flex flex-wrap items-center justify-center text-base ">
-      <a [routerLink]="[ 'home' ]" class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800">Home</a>
-      <a [routerLink]="['characters']" class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800">Personajes</a>
-    </nav>
-    <a class="flex items-center w-40 mx-auto mb-4 font-medium text-gray-900 title-font md:mb-0">
-      <img height="32" width="32" src="../../../assets/img/rick.svg" alt="Rick img">
-    </a>
-  </div>
-</header> -->
 
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div class="relative bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -30,8 +18,8 @@
           </button>
         </div>
         <nav class="hidden md:flex space-x-10">
-          <a [routerLink]="[ 'home' ]" class="text-base font-medium text-gray-500 hover:text-gray-900">
-            Home
+          <a [routerLink]="[ 'episodes' ]" class="text-base font-medium text-gray-500 hover:text-gray-900">
+            Episodios
           </a>
           <a [routerLink]="[ 'characters' ]" class="text-base font-medium text-gray-500 hover:text-gray-900">
             Personajes
@@ -44,14 +32,7 @@
     </div>
   
     <!--
-      Mobile menu, show/hide based on mobile menu state.
-  
-      Entering: "duration-200 ease-out"
-        From: "opacity-0 scale-95"
-        To: "opacity-100 scale-100"
-      Leaving: "duration-100 ease-in"
-        From: "opacity-100 scale-100"
-        To: "opacity-0 scale-95"
+      Mobile menu
     -->
     <div [hidden]="isOn" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
       <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
@@ -72,13 +53,13 @@
           </div>
           <div class="mt-6">
             <nav class="grid gap-y-8">
-              <a [routerLink]="[ 'home' ]" (click)="setIsOn()" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+              <a [routerLink]="[ 'episodes' ]" (click)="setIsOn()" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <!-- Heroicon name: outline/chart-bar -->
                 <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
                 <span class="ml-3 text-base font-medium text-gray-900">
-                  Home
+                  Episodios
                 </span>
               </a>
   

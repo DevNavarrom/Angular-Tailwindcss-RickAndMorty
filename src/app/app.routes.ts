@@ -1,15 +1,14 @@
 
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
-// import { PageNotFoundComponent } from './';
 import { CharactersComponent } from './components/characters/characters.component';
+import { EpisodesComponent } from './components/episodes/episodes.component';
 
 const APP_ROUTES: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: 'episodes', component: EpisodesComponent },
     { path: 'characters', component: CharactersComponent },
-    { path: '**', pathMatch: 'full', redirectTo: 'home' },
+    { path: '**', pathMatch: 'full', redirectTo: 'episodes' },
 
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
