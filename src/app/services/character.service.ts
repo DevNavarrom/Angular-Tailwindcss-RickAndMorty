@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ResponseModel } from '../models/response.model';
+import { CharacterModel } from '../models/character.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class CharacterService {
 
   getCharacters() {
     return this.http.get<ResponseModel>( this.url + '/character' );
+  }
+
+  getCharacter( id: number ) {
+    return this.http.get<CharacterModel>( this.url + '/character/' + id );
   }
 
 }

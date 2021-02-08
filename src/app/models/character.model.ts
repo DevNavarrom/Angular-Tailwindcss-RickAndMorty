@@ -15,5 +15,9 @@ export class CharacterModel {
     episode: string[];
     url: string;
     created: Date;
+
+    constructor() {
+        this.episode = new Array<string>();
+    }
     
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.store';
 import { CharacterModel } from '../../models/character.model';
-import { GetCharactersAction } from '../../store/actions/character.actions';
+import { GetCharactersAction, GetCharacterAction } from '../../store/actions/character.actions';
 import { Subscription } from 'rxjs';
 
 @Component({

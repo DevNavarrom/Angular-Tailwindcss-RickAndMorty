@@ -4,8 +4,9 @@ import { Action } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CharacterService } from '../../services/character.service';
-import { GET_CHARACTERS, GetCharactersAction, GetCharactersOkayAction, GetCharactersFailAction } from '../actions/character.actions';
+import { GET_CHARACTERS, GetCharactersOkayAction, GetCharactersFailAction, GET_CHARACTER, GetCharacterAction, GetCharacterOkayAction, GetCharacterFailAction } from '../actions/character.actions';
 import { ResponseModel } from '../../models/response.model';
+import { CharacterModel } from "src/app/models/character.model";
 
 
 
@@ -31,6 +32,24 @@ export class CharacterEffects {
                 }),
                 catchError( (err) => {
                     return of( new GetCharactersFailAction(err) );
+                })
+            );
+        })
+    );
+
+    @Effect()
+    getCharacter$: Observable<Action> = this.actions$.pipe(
+        ofType( GET_CHARACTER ),
+        mergeMap( (action: GetCharacterAction) => {
+
+            return this._service.getCharacter(action.id).pipe(
+                map( (resp: CharacterModel) => {
+                    if (resp) {
+                        return new GetCharacterOkayAction(resp);
+                    }
+                }),
+                catchError( (err) => {
+                    return of( new GetCharacterFailAction(err) );
                 })
             );
         })
