@@ -4,10 +4,10 @@ import { CharacterModel } from './character.model';
 export class ResponseModel {
 
     info: InfoResponse;
-    results: CharacterModel[];
+    results: any[];
 
     constructor() {
-        this.results = new Array<CharacterModel>();
+        this.results = new Array<any>();
     }
     
 }

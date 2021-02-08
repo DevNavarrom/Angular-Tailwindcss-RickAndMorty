@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.store';
-import { CharacterService } from '../../services/character.service';
 import { CharacterModel } from '../../models/character.model';
 import { GetCharactersAction } from '../../store/actions/character.actions';
 import { Subscription } from 'rxjs';
@@ -28,7 +27,7 @@ export class CharactersComponent implements OnInit {
       this.store.dispatch( new GetCharactersAction() );
     }
 
-    this.subscription = this.store.select( state => state.characters ).subscribe(state => {
+    this.subscription = this.store.select( state => state.charactersState ).subscribe(state => {
 
       if (this.characters.length === 0) {
         this.characters = state.characters;
