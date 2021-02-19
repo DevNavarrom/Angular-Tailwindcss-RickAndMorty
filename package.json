@@ -22,7 +22,10 @@
     "@ngrx/effects": "^10.1.2",
     "@ngrx/store": "^10.1.2",
     "@ngrx/store-devtools": "^10.1.2",
+    "ngx-infinite-scroll": "^10.0.1",
+    "ngx-scrollreveal": "^3.0.0",
     "rxjs": "~6.5.5",
+    "scrollreveal": "^4.0.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

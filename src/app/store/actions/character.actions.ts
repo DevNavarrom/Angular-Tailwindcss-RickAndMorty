@@ -20,7 +20,7 @@ export const GET_CHARACTERS_EPISODE_FAIL = '[CHARACTERS EPISODES] Get All Fail';
 // Get All
 export class GetCharactersAction implements Action {
     readonly type = GET_CHARACTERS;
-    public constructor() {}
+    public constructor( public page?: number ) {}
 }
 
 export class GetCharactersOkayAction implements Action {

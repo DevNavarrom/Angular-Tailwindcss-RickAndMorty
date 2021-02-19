@@ -1,5 +1,5 @@
 <div class="w-full bg-white p-12">
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12" infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="onScroll()">
 
     <div *ngFor="let character of characters"
       class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">

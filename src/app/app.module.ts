@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 //Routes
 // import { AppRoutingModule } from './app-routing.module';
@@ -28,9 +29,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CharactersComponent } from './components/characters/characters.component';
 import { EpisodesComponent } from './components/episodes/episodes.component';
 import { CharacterDetailComponent } from './components/characters/character-detail/character-detail.component';
+import { EpisodeDetailComponent } from './components/episodes/episode-detail/episode-detail.component';
 
 import { environment } from '../environments/environment.prod';
-import { EpisodeDetailComponent } from './components/episodes/episode-detail/episode-detail.component';
 
 
 
@@ -65,6 +66,7 @@ import { EpisodeDetailComponent } from './components/episodes/episode-detail/epi
       maxAge: 25,
       logOnly: environment.production
     }),
+    InfiniteScrollModule
   ],
   providers: [
     CharacterService,

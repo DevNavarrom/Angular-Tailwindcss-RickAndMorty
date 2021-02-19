@@ -4,7 +4,7 @@ import { Action } from "@ngrx/store";
 import { Observable, of } from "rxjs";
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CharacterService } from '../../services/character.service';
-import { GET_CHARACTERS, GetCharactersOkayAction, GetCharactersFailAction, GET_CHARACTER, GetCharacterAction, GetCharacterOkayAction, GetCharacterFailAction, GET_CHARACTERS_EPISODE, GetCharactersEpisodeAction, GetCharactersEpisodeOkayAction, GetCharactersEpisodeFailAction } from '../actions/character.actions';
+import { GET_CHARACTERS, GetCharactersOkayAction, GetCharactersFailAction, GET_CHARACTER, GetCharacterAction, GetCharacterOkayAction, GetCharacterFailAction, GET_CHARACTERS_EPISODE, GetCharactersEpisodeAction, GetCharactersEpisodeOkayAction, GetCharactersEpisodeFailAction, GetCharactersAction } from '../actions/character.actions';
 import { ResponseModel } from '../../models/response.model';
 import { CharacterModel } from "src/app/models/character.model";
 
@@ -22,18 +22,20 @@ export class CharacterEffects {
     @Effect()
     loadCharacters$: Observable<Action> = this.actions$.pipe(
         ofType( GET_CHARACTERS ),
-        mergeMap( () => {
+        mergeMap( (action: GetCharactersAction) => {
 
-            return this._service.getCharacters().pipe(
-                map( (resp: ResponseModel) => {
-                    if (resp.results.length) {
-                        return new GetCharactersOkayAction(resp);
-                    }
-                }),
-                catchError( (err) => {
-                    return of( new GetCharactersFailAction(err) );
-                })
-            );
+            if (!action.page) {
+                return this._service.getCharacters().pipe(
+                    map( (resp: ResponseModel) => {
+                        if (resp.results.length) {
+                            return new GetCharactersOkayAction(resp);
+                        }
+                    }),
+                    catchError( (err) => {
+                        return of( new GetCharactersFailAction(err) );
+                    })
+                );
+            }
         })
     );
 
@@ -71,6 +73,24 @@ export class CharacterEffects {
                 })
             );
 
+        })
+    );
+
+    @Effect()
+    loadNextPage$: Observable<Action> = this.actions$.pipe(
+        ofType( GET_CHARACTERS ),
+        mergeMap( ( action: GetCharactersAction) => {
+
+            return this._service.getNextPage(action.page).pipe(
+                map( (resp: ResponseModel) => {
+                    if (resp.results.length) {
+                        return new GetCharactersOkayAction(resp);
+                    }
+                }),
+                catchError( (err) => {
+                    return of( new GetCharactersFailAction(err) );
+                })
+            );
         })
     );
     

@@ -26,4 +26,8 @@ export class CharacterService {
     return this.http.get<any>( this.url + '/character/' + [ids] );
   }
 
+  getNextPage( page: number ) {
+    return this.http.get<ResponseModel>( this.url + '/character/?page=' + page );
+  }
+
 }

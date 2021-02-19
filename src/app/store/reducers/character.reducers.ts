@@ -19,6 +19,8 @@ export interface CharacterState {
     loadingcharactersEpisode: boolean;
     errorLoadcharactersEpisode: string;
 
+    pages: number;
+
 }
 
 const stateInitial: CharacterState = {
@@ -33,7 +35,9 @@ const stateInitial: CharacterState = {
 
     charactersEpisode : new Array<CharacterModel>(),
     loadingcharactersEpisode : false,
-    errorLoadcharactersEpisode : ""
+    errorLoadcharactersEpisode : "",
+
+    pages: 0
 
 }
 
@@ -48,12 +52,27 @@ export function charactersReducer(
                     errorLoadCharacters: ""
                 }
             case GET_CHARACTERS_OKAY:
+                let temp: CharacterModel[];
+                if (action.payload.results.length > 0) {
+                    temp = new Array<CharacterModel>();
+                    if (state.characters.length > 0) { 
+                        temp = state.characters;
+                    }
+                    /* action.payload.results.forEach( (item: CharacterModel) => {
+                        // state.characters.concat(item);
+                        temp.concat(item);
+                    }); */
+                    temp = action.payload.results;
+                    console.log(temp);
+                }
                 return {
                     ...state,
                     loadingCharacters: false,
                     errorLoadCharacters: "",
-                    characters: action.payload.results
+                    characters: temp,
+                    pages: action.payload.info.pages
                 }
+                
             case GET_CHARACTERS_FAIL:
                 return {
                     ...state,
